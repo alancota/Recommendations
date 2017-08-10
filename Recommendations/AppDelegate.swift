@@ -8,15 +8,22 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //declaring the user defaults to save the deviceToken for push notifications
+    let defaults:UserDefaults = UserDefaults.standard
+    
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        acceptInvalidSSLCerts()
+        
         return true
     }
 
@@ -89,5 +96,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func acceptInvalidSSLCerts() {
+        let manager = Networking.manager
+        print("trying to accept invalid certs")
+        
+        manager.delegate.sessionDidReceiveChallenge = { session, challenge in
+            var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
+            var credential: URLCredential?
+            
+            print("received challenge")
+            
+            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+                disposition = URLSession.AuthChallengeDisposition.useCredential
+                credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            } else {
+                if challenge.previousFailureCount > 0 {
+                    disposition = .cancelAuthenticationChallenge
+                } else {
+                    credential = manager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
+                    
+                    if credential != nil {
+                        disposition = .useCredential
+                    }
+                }
+            }
+            
+            return (disposition, credential)
+        }
+    }
+    
 }
 
