@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class PurchaseListTableViewController: UITableViewController {
+class PurchaseListTableViewController: UITableViewController, URLSessionDelegate {
 
     // MARK: - Class Properties
     
@@ -27,92 +27,56 @@ class PurchaseListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Auto resizing the height of the cell
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.title = "Your recommendations"
+        
         getPurchases()
 
     }
+}
 
+extension PurchaseListTableViewController {
     //
     // MARK: - Call the Recommendation API to pull off the JSON with purchases and recommendations
     func getPurchases() {
         
+        let access_token = defaults.string(forKey: "access_token")!
+        print ("Access token used: \(access_token)")
         
-        // Check whether the demo experience is secure or unsecure
-        if (self.defaults.bool(forKey: Common.Demo.demoExperienceDefaultsKey)) {
+        // Secure Experience - using access_token
+        let urlRequest = Common.Demo.demoAPIOTKCustomerPurchasesBeforeCustomerNumber + customerNumber + Common.Demo.demoAPICustomerPurchasesAfterCustomerNumber+"?access_token=\(access_token)"
+        
+        print ("URL------> \(urlRequest)")
+        
+        // Uses third party Alamofire framework to make the API Call
+        Networking.manager.request(urlRequest, method: .get).validate().responseJSON { response in
             
-            print("Secure Demo Experience")
-            
-            let access_token = defaults.string(forKey: "access_token")!
-            print ("Access token used: \(access_token)")
-            
-            // Secure Experience - using access_token
-            let urlRequest = Common.Demo.demoAPICustomerPurchasesBeforeCustomerNumber + customerNumber + Common.Demo.demoAPICustomerPurchasesAfterCustomerNumber+"?access_token=\(access_token)"
-            
-            print ("URL------> \(urlRequest)")
-            
-            // Uses third party Alamofire framework to make the API Call
-            Alamofire.request(urlRequest, method: .get).validate().responseJSON { response in
+            switch response.result {
                 
-                switch response.result {
-                    
-                case .success(let value):
-                    
-                    let json = JSON(value)
-                    print("Purchases JSON: \(json)")
-                    print("Starting the loop...")
-                    
-                    var count = 0
-                    for (key,subJson):(String, JSON) in json {
-                        self.purchasesList.append(PurchaseListObject(pItem: key, pRec: subJson.rawValue as! [String]))
-                        count += 1
-                    }
-                    
-                case .failure(let error):
-                    print(error)
+            case .success(let value):
+                
+                let json = JSON(value)
+                print("Purchases JSON: \(json)")
+                print("Starting the loop...")
+                
+                var count = 0
+                for (key,subJson):(String, JSON) in json {
+                    self.purchasesList.append(PurchaseListObject(pItem: key, pRec: subJson.rawValue as! [String]))
+                    count += 1
                 }
                 
-                // Force the tableView to reload and use the new purchaseList dictionary
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-                self.tableView.reloadData()
-                
+            case .failure(let error):
+                print(error)
             }
             
-        } else {
+            // Force the tableView to reload and use the new purchaseList dictionary
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            self.tableView.reloadData()
             
-            // Unsecure Experience - no access_token
-            let urlRequest = Common.Demo.demoAPICustomerPurchasesBeforeCustomerNumber + customerNumber + Common.Demo.demoAPICustomerPurchasesAfterCustomerNumber
-            
-            // Uses third party Alamofire framework to make the API Call
-            Alamofire.request(urlRequest, method: .get).validate().responseJSON { response in
-                
-                switch response.result {
-                    
-                case .success(let value):
-                    
-                    let json = JSON(value)
-                    print("Purchases JSON: \(json)")
-                    print("Starting the loop...")
-                    
-                    var count = 0
-                    for (key,subJson):(String, JSON) in json {
-                        self.purchasesList.append(PurchaseListObject(pItem: key, pRec: subJson.rawValue as! [String]))
-                        count += 1
-                    }
-                    
-                case .failure(let error):
-                    print(error)
-                }
-                
-                // Force the tableView to reload and use the new purchaseList dictionary
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-                self.tableView.reloadData()
-                
-            }
         }
-
-        
-        
-        
-        
     }
     
     // MARK: - Table view data source
@@ -124,82 +88,62 @@ class PurchaseListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.purchasesList[section].recommendations.count
-    }
-
-    // Section of the table = purchased item name
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.purchasesList[section].item
+        // return self.purchasesList[section].recommendations.count
+        return self.purchasesList[section].collapsed ? 0: self.purchasesList[section].recommendations.count
     }
     
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecommendationsTableViewCell
-        let image : UIImage = UIImage(named: Common.Demo.demoRecommendationImage)!
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecommendationsTableViewCell
+        
+        let cell: RecommendationsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? RecommendationsTableViewCell ??
+            RecommendationsTableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.lblCell.text = self.purchasesList[indexPath.section].recommendations[indexPath.row]
-        cell.imgCell.image = image
     
         return cell
     }
 
-    // Format the Section Header (Purchased Item Name)
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    
+    // Header
+     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? PurchaseListTableViewHeaderFooterView ?? PurchaseListTableViewHeaderFooterView(reuseIdentifier: "header")
         
-        // Font color
-        header.textLabel?.textColor = UIColor.black
-        // Font size
-        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        header.textLabel?.frame = header.frame
-        header.textLabel?.textAlignment = .left
-        header.backgroundColor = UIColor.darkGray
+        header.titleLabel.text = self.purchasesList[section].item
+        header.arrowLabel.text = ">"
+        header.setCollapsed(self.purchasesList[section].collapsed)
         
+        header.section = section
+        header.delegate = self
+        
+        return header
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
     }
-    */
+    
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+//
+// MARK: - Section Header Delegate
+//
+extension PurchaseListTableViewController: CollapsibleTableViewHeaderDelegate {
+    
+    func toggleSection(_ header: PurchaseListTableViewHeaderFooterView, section: Int) {
+        let collapsed = !self.purchasesList[section].collapsed
+        
+        // Toggle collapse
+        self.purchasesList[section].collapsed = collapsed
+        header.setCollapsed(collapsed)
+        
+        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

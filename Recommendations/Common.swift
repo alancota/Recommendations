@@ -19,7 +19,7 @@ class Common: NSObject {
         
         // LAC API used to fetch a list of all customers and their respective number
         static let demoAPICustomerList = "http://localhost:8111/rest/default/svcOrders/v1/orders:customers"
-        
+
         // Customer API authorization header name
         static let demoAPICustomerListAuthHeader = "Authorization"
         
@@ -28,6 +28,9 @@ class Common: NSObject {
         
         // API to retrieve the purchases of a specific customerNumber - Below the URI BEFORE the customerNumber
         static let demoAPICustomerPurchasesBeforeCustomerNumber = "http://localhost:8080/recSvc/v1/users/"
+        
+        // API to retrieve the purchases of a specific customerNumber - Below the URI BEFORE the customerNumber
+        static let demoAPIOTKCustomerPurchasesBeforeCustomerNumber = "https://localhost:443/recSvc/v1/users/"
         
         // API to retrieve the purchases of a specific customerNumber - Below the URI AFTER the customerNumber
         static let demoAPICustomerPurchasesAfterCustomerNumber = "/orders"

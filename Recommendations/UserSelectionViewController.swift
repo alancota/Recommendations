@@ -34,6 +34,7 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
             // If the user defaults key access_token is empty, update the message label
             self.lblMessage.text = "No access_token present!"
             self.lblMessage.isHidden = false
+            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "notoken"), for: .normal)
             
         } else {
             self.lblMessage.isHidden = true

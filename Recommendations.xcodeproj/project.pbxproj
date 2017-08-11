@@ -26,6 +26,10 @@
 		CDA8CB351F34BC7A000FF0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA8CB331F34BC7A000FF0AB /* LaunchScreen.storyboard */; };
 		CDA8CB3F1F34CD03000FF0AB /* UserSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB3E1F34CD03000FF0AB /* UserSelectionViewController.swift */; };
 		CDA8CB411F34D52A000FF0AB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB401F34D52A000FF0AB /* Common.swift */; };
+		CDEAFA931F3E113200619839 /* AddRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */; };
+		CDEAFA951F3E1BFB00619839 /* microgateway.cer in Resources */ = {isa = PBXBuildFile; fileRef = CDEAFA941F3E1BFB00619839 /* microgateway.cer */; };
+		CDEAFA971F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */; };
+		CDEAFA9B1F3E385F00619839 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAFA9A1F3E385F00619839 /* Extensions.swift */; };
 		CDF61FE71F3CDF7B0027D0C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */; };
 		CDF61FE91F3CF0DF0027D0C6 /* otk.mycompany.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */; };
 		CDF61FEB1F3CFA160027D0C6 /* AccessTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */; };
@@ -64,6 +68,10 @@
 		CDA8CB3C1F34BC83000FF0AB /* Recommendations.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Recommendations.entitlements; sourceTree = "<group>"; };
 		CDA8CB3E1F34CD03000FF0AB /* UserSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionViewController.swift; sourceTree = "<group>"; };
 		CDA8CB401F34D52A000FF0AB /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecommendationViewController.swift; sourceTree = "<group>"; };
+		CDEAFA941F3E1BFB00619839 /* microgateway.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = microgateway.cer; sourceTree = "<group>"; };
+		CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseListTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		CDEAFA9A1F3E385F00619839 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = otk.mycompany.com.cer; sourceTree = "<group>"; };
 		CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */,
+				CDEAFA941F3E1BFB00619839 /* microgateway.cer */,
 				CDA8CB261F34BC79000FF0AB /* Recommendations */,
 				CD3AA74D1F34E1A0004FCAA7 /* Frameworks */,
 				CDA8CB251F34BC79000FF0AB /* Products */,
@@ -157,6 +166,9 @@
 				CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */,
 				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
 				CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */,
+				CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */,
+				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
+				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
 			);
 			path = Recommendations;
 			sourceTree = "<group>";
@@ -238,6 +250,7 @@
 				CDA8CB351F34BC7A000FF0AB /* LaunchScreen.storyboard in Resources */,
 				CDA8CB321F34BC7A000FF0AB /* Assets.xcassets in Resources */,
 				CDF61FE91F3CF0DF0027D0C6 /* otk.mycompany.com.cer in Resources */,
+				CDEAFA951F3E1BFB00619839 /* microgateway.cer in Resources */,
 				CDA8CB2D1F34BC79000FF0AB /* Main.storyboard in Resources */,
 				CD3AA76F1F34E25C004FCAA7 /* SVProgressHUD.bundle in Resources */,
 			);
@@ -327,7 +340,9 @@
 				CDA8CB301F34BC7A000FF0AB /* Recommendations.xcdatamodeld in Sources */,
 				CD3AA7881F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift in Sources */,
 				CDA8CB2A1F34BC79000FF0AB /* ViewController.swift in Sources */,
+				CDEAFA971F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift in Sources */,
 				CDA8CB411F34D52A000FF0AB /* Common.swift in Sources */,
+				CDEAFA9B1F3E385F00619839 /* Extensions.swift in Sources */,
 				CDF61FE71F3CDF7B0027D0C6 /* Networking.swift in Sources */,
 				CD3AA7701F34E25C004FCAA7 /* SVProgressHUD.m in Sources */,
 				CD3AA78A1F3CC08C004FCAA7 /* MainViewController.swift in Sources */,
@@ -336,6 +351,7 @@
 				CDA8CB281F34BC79000FF0AB /* AppDelegate.swift in Sources */,
 				CDF61FEB1F3CFA160027D0C6 /* AccessTokenViewController.swift in Sources */,
 				CD3AA7861F3CAAFD004FCAA7 /* PurchaseListObject.swift in Sources */,
+				CDEAFA931F3E113200619839 /* AddRecommendationViewController.swift in Sources */,
 				CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */,
 				CD3AA7711F34E25C004FCAA7 /* SVRadialGradientLayer.m in Sources */,
 			);

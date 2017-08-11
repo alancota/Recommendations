@@ -12,10 +12,12 @@ class PurchaseListObject {
     
     var item: String!
     var recommendations: [String]!
+    var collapsed: Bool
     
-    required init (pItem: String, pRec: [String]) {
+    required init (pItem: String, pRec: [String], pCollapsed: Bool = false) {
         item = pItem
         recommendations = pRec
+        collapsed = pCollapsed
     }
     
 }

@@ -9,20 +9,29 @@
 import UIKit
 
 class RecommendationsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var imgCell: UIImageView!
-    @IBOutlet weak var lblCell: UILabel!
     
+    let lblCell = UILabel()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: Initalizers
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        let marginGuide = contentView.layoutMarginsGuide
+        
+        // configure nameLabel
+        contentView.addSubview(lblCell)
+        lblCell.translatesAutoresizingMaskIntoConstraints = false
+        lblCell.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
+        lblCell.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        lblCell.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
+        lblCell.numberOfLines = 0
+        lblCell.font = UIFont.systemFont(ofSize: 13)
+        
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

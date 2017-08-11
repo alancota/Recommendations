@@ -15,6 +15,7 @@ class AccessTokenViewController: UIViewController {
     // Class properties
     @IBOutlet weak var lblCurrentAccessToken: UILabel!
     @IBOutlet weak var btnRefreshToken: UIButton!
+    @IBOutlet weak var btnClearToken: UIButton!
     
     // User Defaults to define some demo information
     let defaults = UserDefaults.standard
@@ -29,9 +30,19 @@ class AccessTokenViewController: UIViewController {
         
     }
 
+    // Get a new access token
     @IBAction func btnRefreshTokenTapped(_ sender: Any) {
         
         self.getAccessToken()
+        
+    }
+    
+    // Clear the existing token
+    
+    @IBAction func btnClearTokenTapped(_ sender: Any) {
+        
+        defaults.set("", forKey: "access_token")
+        self.lblCurrentAccessToken.text = "You have no access_token!"
         
     }
     
