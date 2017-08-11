@@ -23,7 +23,10 @@ class AccessTokenViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.lblCurrentAccessToken.text = defaults.string(forKey: "access_token")
+        if !((defaults.string(forKey: "access_token")?.isEmpty)!) {
+                self.lblCurrentAccessToken.text = defaults.string(forKey: "access_token")
+        }
+        
     }
 
     @IBAction func btnRefreshTokenTapped(_ sender: Any) {

@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         acceptInvalidSSLCerts()
+        // Clear the access_token defaults key everytime the app starts
+        defaults.set("", forKey: "access_token")
         
         return true
     }

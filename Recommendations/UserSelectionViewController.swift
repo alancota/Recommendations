@@ -18,12 +18,29 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
     //Class properties
     @IBOutlet weak var userPicker: UIPickerView!
     @IBOutlet weak var tokenPresentButton: UIButton!
+    @IBOutlet weak var lblMessage: UILabel!
 
     
     // Initialize the CustomerObject to store the retrieved customername and customernumber from LAC
     var customers = [CustomerObject]()
     var selectedIndex = 0
     //
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Check if an access_token is present
+        if (self.defaults.string(forKey: "access_token")?.isEmpty)! {
+            
+            // If the user defaults key access_token is empty, update the message label
+            self.lblMessage.text = "No access_token present!"
+            self.lblMessage.isHidden = false
+            
+        } else {
+            self.lblMessage.isHidden = true
+            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "tokenpresent"), for: .normal)
+        }
+        
+    }
     
     // Main Loading
     override func viewDidLoad() {
@@ -33,11 +50,7 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
         self.userPicker.dataSource = self
         self.userPicker.delegate = self
         
-        // Check the demo experience and call the token endpoint to grab an access_token
-        if (self.defaults.bool(forKey: Common.Demo.demoExperienceDefaultsKey)) {
-            self.getAccessToken()
-            self.tokenPresentButton.isHidden = false
-        }
+        
   
         // Fetch the list of customers out of the LAC
         self.getCustomers()

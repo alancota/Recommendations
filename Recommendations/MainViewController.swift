@@ -21,17 +21,17 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Prepare to segue to configure the demo experience
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Secure Demo Experience
-        if segue.identifier == "secureDemoExperience" {
-            defaults.set(true, forKey: Common.Demo.demoExperienceDefaultsKey)
-        }
-        
-        // Unsecure Demo Experience
-        if segue.identifier == "unsecureDemoExperience" {
-            defaults.set(false, forKey: Common.Demo.demoExperienceDefaultsKey)
-        }
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        // Secure Demo Experience
+//        if segue.identifier == "secureDemoExperience" {
+//            defaults.set(true, forKey: Common.Demo.demoExperienceDefaultsKey)
+//        }
+//        
+//        // Unsecure Demo Experience
+//        if segue.identifier == "unsecureDemoExperience" {
+//            defaults.set(false, forKey: Common.Demo.demoExperienceDefaultsKey)
+//        }
+//        
+//    }
 }
