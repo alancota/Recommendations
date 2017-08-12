@@ -67,11 +67,11 @@
 		CDA8CB3E1F34CD03000FF0AB /* UserSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionViewController.swift; sourceTree = "<group>"; };
 		CDA8CB401F34D52A000FF0AB /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecommendationViewController.swift; sourceTree = "<group>"; };
-		CDEAFA941F3E1BFB00619839 /* microgateway.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = microgateway.cer; sourceTree = "<group>"; };
+		CDEAFA941F3E1BFB00619839 /* microgateway.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = microgateway.cer; path = ../microgateway.cer; sourceTree = "<group>"; };
 		CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseListTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		CDEAFA9A1F3E385F00619839 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = otk.mycompany.com.cer; sourceTree = "<group>"; };
+		CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = otk.mycompany.com.cer; path = ../otk.mycompany.com.cer; sourceTree = "<group>"; };
 		CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,8 +127,6 @@
 		CDA8CB1B1F34BC79000FF0AB = {
 			isa = PBXGroup;
 			children = (
-				CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */,
-				CDEAFA941F3E1BFB00619839 /* microgateway.cer */,
 				CDA8CB261F34BC79000FF0AB /* Recommendations */,
 				CD3AA74D1F34E1A0004FCAA7 /* Frameworks */,
 				CDA8CB251F34BC79000FF0AB /* Products */,
@@ -147,27 +145,85 @@
 		CDA8CB261F34BC79000FF0AB /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				CDA8CB3C1F34BC83000FF0AB /* Recommendations.entitlements */,
-				CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */,
-				CDA8CB2B1F34BC79000FF0AB /* Main.storyboard */,
-				CDA8CB311F34BC7A000FF0AB /* Assets.xcassets */,
-				CDA8CB331F34BC7A000FF0AB /* LaunchScreen.storyboard */,
-				CDA8CB361F34BC7A000FF0AB /* Info.plist */,
-				CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */,
-				CDA8CB3E1F34CD03000FF0AB /* UserSelectionViewController.swift */,
-				CDA8CB401F34D52A000FF0AB /* Common.swift */,
-				CD3AA77B1F351C85004FCAA7 /* CustomerObject.swift */,
-				CD3AA77F1F38C133004FCAA7 /* PurchaseListTableViewController.swift */,
-				CD3AA7851F3CAAFC004FCAA7 /* PurchaseListObject.swift */,
-				CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */,
-				CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */,
-				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
-				CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */,
-				CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */,
-				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
-				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
+				CDEAFA9F1F3F818900619839 /* Resources */,
+				CDEAFA9C1F3F813A00619839 /* Delegate */,
+				CDEAFA9E1F3F816C00619839 /* Storyboards */,
+				CDEAFAA01F3F81A400619839 /* ViewControllers */,
+				CDEAFAA11F3F81BC00619839 /* Util */,
+				CDEAFA9D1F3F815C00619839 /* Objects */,
+				CDEAFAA21F3F81DB00619839 /* Classes */,
 			);
 			path = Recommendations;
+			sourceTree = "<group>";
+		};
+		CDEAFA9C1F3F813A00619839 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		CDEAFA9D1F3F815C00619839 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CD3AA77B1F351C85004FCAA7 /* CustomerObject.swift */,
+				CD3AA7851F3CAAFC004FCAA7 /* PurchaseListObject.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		CDEAFA9E1F3F816C00619839 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CDA8CB2B1F34BC79000FF0AB /* Main.storyboard */,
+				CDA8CB331F34BC7A000FF0AB /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		CDEAFA9F1F3F818900619839 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */,
+				CDEAFA941F3E1BFB00619839 /* microgateway.cer */,
+				CDA8CB3C1F34BC83000FF0AB /* Recommendations.entitlements */,
+				CDA8CB311F34BC7A000FF0AB /* Assets.xcassets */,
+				CDA8CB361F34BC7A000FF0AB /* Info.plist */,
+				CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CDEAFAA01F3F81A400619839 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */,
+				CDA8CB3E1F34CD03000FF0AB /* UserSelectionViewController.swift */,
+				CD3AA77F1F38C133004FCAA7 /* PurchaseListTableViewController.swift */,
+				CDF61FEA1F3CFA160027D0C6 /* AccessTokenViewController.swift */,
+				CDEAFA921F3E113200619839 /* AddRecommendationViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CDEAFAA11F3F81BC00619839 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CDA8CB401F34D52A000FF0AB /* Common.swift */,
+				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
+				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		CDEAFAA21F3F81DB00619839 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */,
+				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
