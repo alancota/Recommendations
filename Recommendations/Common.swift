@@ -50,6 +50,9 @@ class Common: NSObject {
         
         // LAC Recommendation table backend Admin Token
         static let demoAPIRecommendationAuthHeaderValue = "CALiveAPICreator Y1tmNkYbxu5t93ixTCtJ:1"
+        
+        // LAC Products table backend API
+        static let demoAPIProducts = "http://localhost:8111/rest/default/svcRecs/v1/rec:products"
     }
     
     //OAuth Information to obtain an access_token

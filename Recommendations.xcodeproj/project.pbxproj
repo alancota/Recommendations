@@ -145,6 +145,7 @@
 		CDA8CB261F34BC79000FF0AB /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAFAA31F3FAFDF00619839 /* DemoConfig */,
 				CDEAFA9F1F3F818900619839 /* Resources */,
 				CDEAFA9C1F3F813A00619839 /* Delegate */,
 				CDEAFA9E1F3F816C00619839 /* Storyboards */,
@@ -210,7 +211,6 @@
 		CDEAFAA11F3F81BC00619839 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				CDA8CB401F34D52A000FF0AB /* Common.swift */,
 				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
 				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
 			);
@@ -224,6 +224,14 @@
 				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		CDEAFAA31F3FAFDF00619839 /* DemoConfig */ = {
+			isa = PBXGroup;
+			children = (
+				CDA8CB401F34D52A000FF0AB /* Common.swift */,
+			);
+			name = DemoConfig;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

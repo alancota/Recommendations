@@ -10,19 +10,27 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class AddRecommendationViewController: UIViewController {
+class AddRecommendationViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // Class properties
-    @IBOutlet weak var txtProductCode: UITextField!
     @IBOutlet weak var txtRecProdCode: UITextField!
     @IBOutlet weak var txtRecProdName: UITextField!
     @IBOutlet weak var btnCallAPI: UIButton!
+    @IBOutlet weak var pickerProducts: UIPickerView!
     
+    // Products array
+    var productList = [String]()
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Connect PickerList to its data
+        self.pickerProducts.dataSource = self
+        self.pickerProducts.delegate = self
+        
+        // Call the function to get the list of products and use is as the pickerList
+        getProducts()
     }
 
     @IBAction func btnCallAPITapped(_ sender: Any) {
@@ -31,14 +39,36 @@ class AddRecommendationViewController: UIViewController {
         
     }
     
+    // PickerView delegate methods
+    // Sets number of columns in picker view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    // Sets the number of rows in the picker view
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.productList.count
+    }
     
+    // This function sets the text of the picker view to the content of the "salutations" array
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let product = self.productList[row]
+        selectedIndex = row
+        return product
+    }
+    
+    // Change the picker view font and its color
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = self.productList[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 14.0)!,NSForegroundColorAttributeName:UIColor.white])
+        return myTitle
+    }
     
     // Function to make a POST to the LAC Recommendations table API
     func addRecommendation() {
         
         
-        let httpParams = ["productCode":self.txtProductCode.text!, "r_productCode":txtRecProdCode.text!, "r_productName":txtRecProdName.text!]
+        let httpParams = ["productCode":self.productList[self.selectedIndex], "r_productCode":txtRecProdCode.text!, "r_productName":txtRecProdName.text!]
         
         print(httpParams)
         
@@ -58,7 +88,7 @@ class AddRecommendationViewController: UIViewController {
                 print("Recommendation added!")
                 
                 // Success
-                let alertController = UIAlertController(title: "Add new recommendation", message: Common.Dialogs.newRecommendation + " - [\(self.txtProductCode.text!)]", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Add new recommendation", message: Common.Dialogs.newRecommendation + " - [\(self.productList[self.selectedIndex])]", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                     
                     self.navigationController?.popViewController(animated: true)
@@ -83,7 +113,36 @@ class AddRecommendationViewController: UIViewController {
         }
         }
 
-
     
     }
+    
+    // Func to grab the list of products and present as a picker list
+    func getProducts() {
+        
+        SVProgressHUD.show(withStatus: "Fetching the products list, please wait...")
+        let headers: HTTPHeaders = [
+            Common.Demo.demoAPICustomerListAuthHeader: Common.Demo.demoAPIRecommendationAuthHeaderValue,
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(Common.Demo.demoAPIProducts, method: .get, headers: headers).validate().responseJSON { response in
+            
+            SVProgressHUD.dismiss()
+            
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                //Loop to build out the item selector (picker)
+                for (key,subJson):(String, JSON) in json {
+                    self.productList.append(subJson["productCode"].stringValue)
+                }
+                self.pickerProducts.reloadAllComponents()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
 }
