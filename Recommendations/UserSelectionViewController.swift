@@ -19,6 +19,7 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var userPicker: UIPickerView!
     @IBOutlet weak var tokenPresentButton: UIButton!
     @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var btnSeeRecommendation: UIButton!
 
     
     // Initialize the CustomerObject to store the retrieved customername and customernumber from LAC
@@ -32,13 +33,15 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
         if (self.defaults.string(forKey: "access_token")?.isEmpty)! {
             
             // If the user defaults key access_token is empty, update the message label
-            self.lblMessage.text = "No access_token present!"
+            self.lblMessage.text = "Get an access_token first!"
             self.lblMessage.isHidden = false
             self.tokenPresentButton.setImage(#imageLiteral(resourceName: "notoken"), for: .normal)
+            self.btnSeeRecommendation.isEnabled = false
             
         } else {
             self.lblMessage.isHidden = true
             self.tokenPresentButton.setImage(#imageLiteral(resourceName: "tokenpresent"), for: .normal)
+            self.btnSeeRecommendation.isEnabled = true
         }
         
     }

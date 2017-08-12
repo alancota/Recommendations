@@ -135,6 +135,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oTp-po-Sd9"/>
                     <connections>
+                        <outlet property="btnSeeRecommendation" destination="uGN-mE-V85" id="mmL-HV-IkN"/>
                         <outlet property="lblMessage" destination="GWl-8u-CQF" id="NBW-eT-T2Q"/>
                         <outlet property="tokenPresentButton" destination="AFF-Vc-bf4" id="eOv-jQ-4OL"/>
                         <outlet property="userPicker" destination="NFx-UF-hCe" id="hEI-eb-Iwx"/>
