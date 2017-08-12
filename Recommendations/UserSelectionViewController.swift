@@ -178,10 +178,7 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
         if segue.identifier == "showPurchases" {
               let controller = segue.destination as! PurchaseListTableViewController
               controller.customerNumber = self.customers[selectedIndex].customerNumber
-//            let nav = segue.destination as! UINavigationController
-//            let controller = nav.topViewController as! PurchaseListTableViewController
-//            controller.customerNumber = self.customers[selectedIndex].customerNumber
-            
+
         }
         
     }

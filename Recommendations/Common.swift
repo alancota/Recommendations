@@ -44,6 +44,12 @@ class Common: NSObject {
         
         // User Defaults Key for the secure or unsecure demo experience
         static let demoExperienceDefaultsKey = "secure"
+        
+        // LAC Recommendation table backend API
+        static let demoAPIRecommendation = "http://localhost:8111/rest/default/svcRecs/v1/rec:recommendations"
+        
+        // LAC Recommendation table backend Admin Token
+        static let demoAPIRecommendationAuthHeaderValue = "CALiveAPICreator Y1tmNkYbxu5t93ixTCtJ:1"
     }
     
     //OAuth Information to obtain an access_token
@@ -72,4 +78,18 @@ class Common: NSObject {
         
     }
     
+    // Error codes
+    struct Error {
+        
+        // Error 1001: Adding recommendation
+        static let error1001 = "[1001] - Add new recommendation:"
+    }
+    
+    // User Dialogs
+    struct Dialogs {
+        
+        // New Recommendation successfully added
+        static let newRecommendation = "New recommendation successfully added"
+        
+    }
 }

@@ -34,3 +34,23 @@ extension UIView {
         self.layer.add(animation, forKey: nil)
     }
 }
+
+extension String {
+    
+    static func toJSonString(data : Any) -> String {
+        
+        var jsonString = "";
+        
+        do {
+            
+            let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+            jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return jsonString;
+    }
+    
+}
