@@ -8,16 +8,25 @@
 
 import SwiftyJSON
 
-class ProductObject {
+class ProductObject: CustomStringConvertible, Comparable {
     
     var productCode: String!
     var productName: String!
+    var description: String { return productName }
     
     required init (json: JSON) {
         
         productCode = json["productCode"].stringValue
         productName = json["productName"].stringValue
         
+    }
+    
+    static func ==(lhs: ProductObject, rhs: ProductObject) -> Bool {
+        return lhs.productName == rhs.productName
+    }
+    
+    static func <(lhs: ProductObject, rhs: ProductObject) -> Bool {
+        return lhs.productName < rhs.productName
     }
     
 }

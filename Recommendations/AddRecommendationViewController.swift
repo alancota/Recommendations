@@ -53,8 +53,12 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
     
     // This function sets the text of the picker view to the content of the "salutations" array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        self.productList.sort { $0.productName < $1.productName }
         let product = self.productList[row]
         selectedIndex = row
+        
+        
         
         // Here you can present either the productCode or the productName within the picker list
         return product.productName
@@ -146,6 +150,10 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
                 for (key,subJson):(String, JSON) in json {
                     self.productList.append(ProductObject(json: subJson))
                 }
+                
+                // Sorting the productList object alphabecitally
+                self.productList.sort(by: { ($0.productName < $1.productName) })
+                
                 self.pickerProducts.reloadAllComponents()
             case .failure(let error):
                 print(error)
