@@ -19,8 +19,9 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
     @IBOutlet weak var pickerProducts: UIPickerView!
     
     // Products array
-    var productList = [String]()
+    var productList = [ProductObject]()
     var selectedIndex = 0
+    var selectedProduct = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,21 +55,29 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let product = self.productList[row]
         selectedIndex = row
-        return product
+        
+        // Here you can present either the productCode or the productName within the picker list
+        return product.productName
     }
     
     // Change the picker view font and its color
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = self.productList[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 14.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let titleData = self.productList[row].productName
+        let myTitle = NSAttributedString(string: titleData!, attributes: [NSFontAttributeName:UIFont(name: "Verdana", size: 9.0)!,NSForegroundColorAttributeName:UIColor.white])
         return myTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedProduct = self.productList[row].productCode!
+        self.selectedIndex = row
+        print("Selected row \(self.selectedIndex): \(self.selectedProduct)")
     }
     
     // Function to make a POST to the LAC Recommendations table API
     func addRecommendation() {
         
         
-        let httpParams = ["productCode":self.productList[self.selectedIndex], "r_productCode":txtRecProdCode.text!, "r_productName":txtRecProdName.text!]
+        let httpParams = ["productCode":self.selectedProduct, "r_productCode":txtRecProdCode.text!, "r_productName":txtRecProdName.text!]
         
         print(httpParams)
         
@@ -88,7 +97,7 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
                 print("Recommendation added!")
                 
                 // Success
-                let alertController = UIAlertController(title: "Add new recommendation", message: Common.Dialogs.newRecommendation + " - [\(self.productList[self.selectedIndex])]", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Add new recommendation", message: Common.Dialogs.newRecommendation + " \(self.productList[self.selectedIndex].productName!) - code (\(self.productList[self.selectedIndex].productCode!))", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                     
                     self.navigationController?.popViewController(animated: true)
@@ -135,7 +144,7 @@ class AddRecommendationViewController: UIViewController, UIPickerViewDataSource,
                 print("JSON: \(json)")
                 //Loop to build out the item selector (picker)
                 for (key,subJson):(String, JSON) in json {
-                    self.productList.append(subJson["productCode"].stringValue)
+                    self.productList.append(ProductObject(json: subJson))
                 }
                 self.pickerProducts.reloadAllComponents()
             case .failure(let error):

@@ -18,6 +18,7 @@
 		CD3AA7861F3CAAFD004FCAA7 /* PurchaseListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7851F3CAAFC004FCAA7 /* PurchaseListObject.swift */; };
 		CD3AA7881F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */; };
 		CD3AA78A1F3CC08C004FCAA7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */; };
+		CD5D69601F4206A8007D8154 /* ProductObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D695F1F4206A8007D8154 /* ProductObject.swift */; };
 		CDA8CB281F34BC79000FF0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */; };
 		CDA8CB2D1F34BC79000FF0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA8CB2B1F34BC79000FF0AB /* Main.storyboard */; };
 		CDA8CB301F34BC7A000FF0AB /* Recommendations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		CD3AA7851F3CAAFC004FCAA7 /* PurchaseListObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseListObject.swift; sourceTree = "<group>"; };
 		CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsTableViewCell.swift; sourceTree = "<group>"; };
 		CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CD5D695F1F4206A8007D8154 /* ProductObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductObject.swift; sourceTree = "<group>"; };
 		CDA8CB241F34BC79000FF0AB /* Recommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recommendations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA8CB2C1F34BC79000FF0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				CD3AA77B1F351C85004FCAA7 /* CustomerObject.swift */,
 				CD3AA7851F3CAAFC004FCAA7 /* PurchaseListObject.swift */,
+				CD5D695F1F4206A8007D8154 /* ProductObject.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				CD3AA7861F3CAAFD004FCAA7 /* PurchaseListObject.swift in Sources */,
 				CDEAFA931F3E113200619839 /* AddRecommendationViewController.swift in Sources */,
 				CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */,
+				CD5D69601F4206A8007D8154 /* ProductObject.swift in Sources */,
 				CD3AA7711F34E25C004FCAA7 /* SVRadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

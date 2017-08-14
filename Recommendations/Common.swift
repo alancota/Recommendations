@@ -92,7 +92,7 @@ class Common: NSObject {
     struct Dialogs {
         
         // New Recommendation successfully added
-        static let newRecommendation = "New recommendation successfully added"
+        static let newRecommendation = "New recommendation successfully added to the product:"
         
     }
 }
