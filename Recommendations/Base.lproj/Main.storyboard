@@ -221,7 +221,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SlC-Nu-fHZ" id="Enf-IJ-vGe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
@@ -233,7 +233,16 @@
                             <outlet property="delegate" destination="nhd-Wx-O7c" id="h4Z-qW-PqK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lU8-50-nCK"/>
+                    <navigationItem key="navigationItem" id="lU8-50-nCK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="6vo-GY-c3f">
+                            <connections>
+                                <action selector="btnRefreshTapped:" destination="nhd-Wx-O7c" id="Wtr-ct-wGM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnRefresh" destination="6vo-GY-c3f" id="AvL-Ii-uUU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BH-EM-0J0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

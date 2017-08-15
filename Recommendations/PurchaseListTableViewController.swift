@@ -13,6 +13,7 @@ import SwiftyJSON
 class PurchaseListTableViewController: UITableViewController, URLSessionDelegate {
 
     // MARK: - Class Properties
+    @IBOutlet weak var btnRefresh: UIBarButtonItem!
     
     // User Defaults to define some demo information
     let defaults = UserDefaults.standard
@@ -36,6 +37,14 @@ class PurchaseListTableViewController: UITableViewController, URLSessionDelegate
         getPurchases()
 
     }
+    
+    @IBAction func btnRefreshTapped(_ sender: Any) {
+        
+        self.getPurchases()
+        
+    }
+    
+    
 }
 
 extension PurchaseListTableViewController {
@@ -128,6 +137,8 @@ extension PurchaseListTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1.0
     }
+   
+    
     
 }
 
