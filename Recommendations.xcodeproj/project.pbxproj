@@ -19,6 +19,7 @@
 		CD3AA7881F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */; };
 		CD3AA78A1F3CC08C004FCAA7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */; };
 		CD5D69601F4206A8007D8154 /* ProductObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D695F1F4206A8007D8154 /* ProductObject.swift */; };
+		CD5D69641F463893007D8154 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5D69631F463893007D8154 /* Service.swift */; };
 		CDA8CB281F34BC79000FF0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */; };
 		CDA8CB2D1F34BC79000FF0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA8CB2B1F34BC79000FF0AB /* Main.storyboard */; };
 		CDA8CB301F34BC7A000FF0AB /* Recommendations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */; };
@@ -58,6 +59,7 @@
 		CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsTableViewCell.swift; sourceTree = "<group>"; };
 		CD3AA7891F3CC08C004FCAA7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD5D695F1F4206A8007D8154 /* ProductObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductObject.swift; sourceTree = "<group>"; };
+		CD5D69631F463893007D8154 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CDA8CB241F34BC79000FF0AB /* Recommendations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recommendations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA8CB271F34BC79000FF0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA8CB2C1F34BC79000FF0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 				CDEAFA9C1F3F813A00619839 /* Delegate */,
 				CDEAFA9E1F3F816C00619839 /* Storyboards */,
 				CDEAFAA01F3F81A400619839 /* ViewControllers */,
-				CDEAFAA11F3F81BC00619839 /* Util */,
 				CDEAFA9D1F3F815C00619839 /* Objects */,
 				CDEAFAA21F3F81DB00619839 /* Classes */,
 			);
@@ -211,20 +212,14 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		CDEAFAA11F3F81BC00619839 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
-				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
 		CDEAFAA21F3F81DB00619839 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAFA9A1F3E385F00619839 /* Extensions.swift */,
+				CDF61FE61F3CDF7B0027D0C6 /* Networking.swift */,
 				CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */,
 				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
+				CD5D69631F463893007D8154 /* Service.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -407,6 +402,7 @@
 				CDA8CB411F34D52A000FF0AB /* Common.swift in Sources */,
 				CDEAFA9B1F3E385F00619839 /* Extensions.swift in Sources */,
 				CDF61FE71F3CDF7B0027D0C6 /* Networking.swift in Sources */,
+				CD5D69641F463893007D8154 /* Service.swift in Sources */,
 				CD3AA7701F34E25C004FCAA7 /* SVProgressHUD.m in Sources */,
 				CD3AA78A1F3CC08C004FCAA7 /* MainViewController.swift in Sources */,
 				CD3AA7801F38C133004FCAA7 /* PurchaseListTableViewController.swift in Sources */,

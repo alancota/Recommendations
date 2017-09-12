@@ -9,7 +9,7 @@
 
 import SwiftyJSON
 
-class CustomerObject {
+final class CustomerObject {
     
     var customerName: String!
     var customerNumber: String!

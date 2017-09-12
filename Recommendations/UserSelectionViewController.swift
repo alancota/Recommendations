@@ -11,7 +11,10 @@ import SwiftyJSON
 import Alamofire
 
 class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, URLSessionDelegate {
-
+    
+    // Initiate the Service class as a singleton
+    let service = Service.sharedInstance
+    
     // User Defaults to define some demo information
     let defaults = UserDefaults.standard
     
@@ -66,37 +69,7 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBAction func tokenPresentButtonTapped(_ sender: Any) {
         
     }
-    
-    
-    //
-    // This function will fetch an access_token to be used to securely call the APIs (part of the secure demo experience)
-    func getAccessToken() {
-        
-        SVProgressHUD.show(withStatus: "Securing your demo experience with an OAuth access_token, please wait...")
-        
-        let httpParams : [String:Any]? = ["client_id":Common.OAuth.oauthClientId, "client_secret":Common.OAuth.oauthClientSecret, "scope":Common.OAuth.oauthScope, "grant_type":Common.OAuth.oauthGrantType, "username":Common.OAuth.oauthUsername, "password":Common.OAuth.oauthPassword]
 
-        var atResponse:JSON = []
-        
-        Networking.manager.request(Common.OAuth.oauthTokenEndpoint, method: .post, parameters: httpParams).validate().responseJSON {
-                        response in
-            
-                        SVProgressHUD.dismiss()
-            
-                        switch (response.result) {
-                            case .success(let value):
-                                atResponse = JSON(value)
-                                print("AT Response: \(atResponse)")
-                            self.defaults.set(atResponse["access_token"].stringValue as String, forKey: "access_token")
-                            
-                        case .failure(let error):
-                                print("Error >>> \(error)")
-                            
-                        }
-                    }
-        
-         print("Access token saved!")
-    }
     
     // PickerView delegate methods
     // Sets number of columns in picker view
@@ -119,60 +92,26 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
     // MARK: Fetch the customer list (name + number) to be used with the picker list
     func getCustomers() {
         
-        // Checking if the demo is in secure mode
-        if (self.defaults.bool(forKey: Common.Demo.demoExperienceDefaultsKey)) {
-            // Secure Experience - access_token used to call the endpoint
-            SVProgressHUD.show(withStatus: "Fetching the customer list using an access_token, please wait...")
-            let headers: HTTPHeaders = [
-                Common.Demo.demoAPICustomerListAuthHeader: Common.Demo.demoAPICustomerListAuthHeaderValue,
-                "Accept": "application/json"
-            ]
+        let headers: HTTPHeaders = [
+            Common.Demo.demoAPICustomerListAuthHeader: Common.Demo.demoAPICustomerListAuthHeaderValue,
+            "Accept": "application/json"
+        ]
+ 
+        
+        service.getAPI(uri: Common.Demo.demoAPICustomerList, headers: headers, stopProgress: true, success: { (response) in
             
-            let access_token=defaults.string(forKey: "access_token")
-            
-            Alamofire.request(Common.Demo.demoAPICustomerList, method: .get, headers: headers).validate().responseJSON { response in
-                
-                SVProgressHUD.dismiss()
-                
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    print("JSON: \(json)")
-                    //Loop to build out the item selector (picker)
-                    for (key,subJson):(String, JSON) in json {
-                        self.customers.append(CustomerObject(json: subJson))
-                    }
-                    self.userPicker.reloadAllComponents()
-                case .failure(let error):
-                    print(error)
-                }
+            print(response)
+            for (key,subJson):(String, JSON) in response as JSON {
+                self.customers.append(CustomerObject(json: subJson))
             }
-        } else {
-            // Unsecure Experience - no access_token used to call the endpoint
-            SVProgressHUD.show(withStatus: "Fetching the customer list, please wait...")
-            let headers: HTTPHeaders = [
-                Common.Demo.demoAPICustomerListAuthHeader: Common.Demo.demoAPICustomerListAuthHeaderValue,
-                "Accept": "application/json"
-            ]
+            self.userPicker.reloadAllComponents()
             
-            Alamofire.request(Common.Demo.demoAPICustomerList, method: .get, headers: headers).validate().responseJSON { response in
-                
-                SVProgressHUD.dismiss()
-                
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    print("JSON: \(json)")
-                    //Loop to build out the item selector (picker)
-                    for (key,subJson):(String, JSON) in json {
-                        self.customers.append(CustomerObject(json: subJson))
-                    }
-                    self.userPicker.reloadAllComponents()
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        }, failure: { (error) in
+            
+            print(error)
+            
+        })
+ 
     }
     
     // MARK: - Prepare to segue when the see recommendation button is tapped
