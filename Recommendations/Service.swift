@@ -44,8 +44,8 @@ extension Functions {
                      method: HTTPMethod,
                      parameters: [String:Any],
                      headers: HTTPHeaders,
-                     success: (JSON) -> Void,
-                     failure: (NSError) -> Void) {
+                     success: @escaping (JSON) -> Void,
+                     failure: @escaping (NSError) -> Void) {
         
         Networking.manager.request(url, method: method, parameters: parameters, headers: headers).validate().responseJSON {
             response in
