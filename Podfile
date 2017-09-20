@@ -5,4 +5,6 @@ target 'Recommendations' do
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 4.4'
     pod 'YNExpandableCell'
+    pod 'MASFoundation'
+    pod 'MASUI'
 end
