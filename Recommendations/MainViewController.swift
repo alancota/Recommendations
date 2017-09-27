@@ -130,6 +130,10 @@ class MainViewController: UIViewController {
                 self.performSegue(withIdentifier: "secureDemoExperience", sender: self)
             } else {
                 // Not Admin
+                
+                // API Call to get the customerNumber from LAC through MAG
+                
+                
                 let controller:PurchaseListTableViewController = PurchaseListTableViewController()
                 controller.customerNumber = "103"
                 self.present(controller, animated: true, completion: nil)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F78788F1F741508007CF60B /* msso_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F78788E1F741508007CF60B /* msso_config.json */; };
+		1FD4565B1F7C11ED00139619 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4565A1F7C11ED00139619 /* Service.swift */; };
 		CD3AA76D1F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7641F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m */; };
 		CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7661F34E25C004FCAA7 /* SVProgressAnimatedView.m */; };
 		CD3AA76F1F34E25C004FCAA7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD3AA7681F34E25C004FCAA7 /* SVProgressHUD.bundle */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1F78788E1F741508007CF60B /* msso_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = msso_config.json; sourceTree = "<group>"; };
+		1FD4565A1F7C11ED00139619 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		7525DDB7AA675C72CEB5FE04 /* Pods_Recommendations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recommendations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6CB61E63E8D44BBC18F4AF /* Pods-Recommendations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.debug.xcconfig"; sourceTree = "<group>"; };
 		C726E2ACAEBF6B00F4134CE5 /* Pods-Recommendations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				CD3AA7871F3CB4D3004FCAA7 /* RecommendationsTableViewCell.swift */,
 				CDEAFA961F3E270400619839 /* PurchaseListTableViewHeaderFooterView.swift */,
+				1FD4565A1F7C11ED00139619 /* Service.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				CD3AA7861F3CAAFD004FCAA7 /* PurchaseListObject.swift in Sources */,
 				CDEAFA931F3E113200619839 /* AddRecommendationViewController.swift in Sources */,
 				CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */,
+				1FD4565B1F7C11ED00139619 /* Service.swift in Sources */,
 				CD5D69601F4206A8007D8154 /* ProductObject.swift in Sources */,
 				CD3AA7711F34E25C004FCAA7 /* SVRadialGradientLayer.m in Sources */,
 			);
