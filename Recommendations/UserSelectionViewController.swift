@@ -30,19 +30,19 @@ class UserSelectionViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewWillAppear(_ animated: Bool) {
         
         // Check if an access_token is present
-        if (self.defaults.string(forKey: "access_token")?.isEmpty)! {
-            
-            // If the user defaults key access_token is empty, update the message label
-            self.lblMessage.text = "Get an access_token first!"
-            self.lblMessage.isHidden = false
-            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "notoken"), for: .normal)
-            self.btnSeeRecommendation.isEnabled = false
-            
-        } else {
-            self.lblMessage.isHidden = true
-            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "tokenpresent"), for: .normal)
-            self.btnSeeRecommendation.isEnabled = true
-        }
+//        if (self.defaults.string(forKey: "access_token")?.isEmpty)! {
+//
+//            // If the user defaults key access_token is empty, update the message label
+//            self.lblMessage.text = "Get an access_token first!"
+//            self.lblMessage.isHidden = false
+//            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "notoken"), for: .normal)
+//            self.btnSeeRecommendation.isEnabled = false
+//
+//        } else {
+//            self.lblMessage.isHidden = true
+//            self.tokenPresentButton.setImage(#imageLiteral(resourceName: "tokenpresent"), for: .normal)
+//            self.btnSeeRecommendation.isEnabled = true
+//        }
         
     }
     

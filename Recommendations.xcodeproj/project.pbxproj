@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F78788F1F741508007CF60B /* msso_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F78788E1F741508007CF60B /* msso_config.json */; };
 		CD3AA76D1F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7641F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m */; };
 		CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7661F34E25C004FCAA7 /* SVProgressAnimatedView.m */; };
 		CD3AA76F1F34E25C004FCAA7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD3AA7681F34E25C004FCAA7 /* SVProgressHUD.bundle */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F78788E1F741508007CF60B /* msso_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = msso_config.json; sourceTree = "<group>"; };
 		7525DDB7AA675C72CEB5FE04 /* Pods_Recommendations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recommendations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6CB61E63E8D44BBC18F4AF /* Pods-Recommendations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.debug.xcconfig"; sourceTree = "<group>"; };
 		C726E2ACAEBF6B00F4134CE5 /* Pods-Recommendations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				CDA8CB311F34BC7A000FF0AB /* Assets.xcassets */,
 				CDA8CB361F34BC7A000FF0AB /* Info.plist */,
 				CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */,
+				1F78788E1F741508007CF60B /* msso_config.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -281,7 +284,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -317,6 +320,7 @@
 				CDEAFA951F3E1BFB00619839 /* microgateway.cer in Resources */,
 				CDA8CB2D1F34BC79000FF0AB /* Main.storyboard in Resources */,
 				CD3AA76F1F34E25C004FCAA7 /* SVProgressHUD.bundle in Resources */,
+				1F78788F1F741508007CF60B /* msso_config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,12 +385,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${PODS_ROOT}/MASFoundation/MASFoundation.framework",
+				"${PODS_ROOT}/MASUI/MASUI.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/YNExpandableCell/YNExpandableCell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNExpandableCell.framework",
 			);

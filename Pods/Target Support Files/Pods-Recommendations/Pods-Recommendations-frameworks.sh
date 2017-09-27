@@ -103,11 +103,15 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${PODS_ROOT}/MASFoundation/MASFoundation.framework"
+  install_framework "${PODS_ROOT}/MASUI/MASUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YNExpandableCell/YNExpandableCell.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${PODS_ROOT}/MASFoundation/MASFoundation.framework"
+  install_framework "${PODS_ROOT}/MASUI/MASUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YNExpandableCell/YNExpandableCell.framework"
 fi

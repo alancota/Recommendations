@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (4.5.0)
-  - MASFoundation (1.4.00)
-  - MASUI (1.4.00):
-    - MASFoundation (= 1.4.00)
+  - Alamofire (4.5.1)
+  - MASFoundation (1.5.00)
+  - MASUI (1.5.00):
+    - MASFoundation (= 1.5.00)
   - SwiftyJSON (3.1.4)
   - YNExpandableCell (1.1.0)
 
@@ -14,9 +14,9 @@ DEPENDENCIES:
   - YNExpandableCell
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  MASFoundation: ed16997c99ad174427bee749d3899e4268e329ad
-  MASUI: 925a215a83f71e69ddd0aa7ddf9123055efa6029
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  MASFoundation: c1951d902893e1f66e1fdea144adbff303fe829c
+  MASUI: d7a50423a15361d773b46c75ab6ab61dd389774c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   YNExpandableCell: 47bf7cff721aa535c0e9e1163bf22b5573441bb4
 

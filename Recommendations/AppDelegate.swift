@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        acceptInvalidSSLCerts()
+        //acceptInvalidSSLCerts()
         // Clear the access_token defaults key everytime the app starts
-        defaults.set("", forKey: "access_token")
+        //defaults.set("", forKey: "access_token")
         
         return true
     }
