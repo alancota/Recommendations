@@ -8,6 +8,8 @@
 
 import UIKit
 import MASFoundation
+import MASUI
+
 
 class MainViewController: UIViewController {
 
@@ -18,7 +20,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var btnDemoOTK: UIButton!
     @IBOutlet weak var btnDemoAddRec: UIButton!
     
-    
+    // Initiate the Service class as a singleton
+    let service = Service.sharedInstance
     
     // User Defaults to define some demo information
     let defaults = UserDefaults.standard
@@ -89,14 +92,18 @@ class MainViewController: UIViewController {
             
             if (error != nil) {
                 print("MAS User AuthN error: " + error.debugDescription)
+            } else {
+                
+                self.btnLogin.isEnabled = false
+                
+                self.btnDemoOTK.isEnabled = true
+                self.btnDemoAddRec.isEnabled = true
+                
+                self.lblUserDemoExp.text = "Hello, " + MASUser.current()!.userName + ". Please select your demo experience below"
+                
             }
             
-            self.btnLogin.isEnabled = false
             
-            self.btnDemoOTK.isEnabled = true
-            self.btnDemoAddRec.isEnabled = true
-            
-            self.lblUserDemoExp.text = "Hello, " + MASUser.current()!.userName + ". Please select your demo experience below"
         })
     }
     
@@ -129,10 +136,20 @@ class MainViewController: UIViewController {
             if (MASUser.current()!.userName == "admin") {
                 self.performSegue(withIdentifier: "secureDemoExperience", sender: self)
             } else {
+                //
                 // Not Admin
                 
+                //
                 // API Call to get the customerNumber from LAC through MAG
-                
+                service.httpGet(uri: "/demo/customerNumber", parameters: [:], headers: [:], success: { (response) in
+                    
+                    print (response)
+                    
+                }, failure: { (error) in
+                    
+                    print (error)
+                    
+                })
                 
                 let controller:PurchaseListTableViewController = PurchaseListTableViewController()
                 controller.customerNumber = "103"

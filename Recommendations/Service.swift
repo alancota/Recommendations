@@ -23,7 +23,7 @@ final class Service {
     
     private init() {
         
-        print("Service Class started")
+        print("The Service Class has been started")
         
     }
     
@@ -31,18 +31,18 @@ final class Service {
 
 extension Functions {
     
-    func httpGet(uri: String, parameters: [Any: Any], headers: [Any: Any],success:@escaping (JSON) -> Void, failure:@escaping (NSError) -> Void) {
+    func httpGet(uri: String, parameters: [AnyHashable : Any], headers: [AnyHashable : Any],success:@escaping (JSON) -> Void, failure:@escaping (NSError) -> Void) {
         
         MAS.getFrom(uri, withParameters: parameters, andHeaders: headers, completion: { (response, error) in
             
             // Error
             if (error != nil) {
                 print("Error calling the HTTP GET API: " + error.debugDescription)
-                failure((error))
+                failure((error! as NSError))
             }
             
            // Success
-           success(JSON(response))
+            success(JSON(response!))
             
         })
         

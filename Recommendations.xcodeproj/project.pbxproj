@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1F78788F1F741508007CF60B /* msso_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F78788E1F741508007CF60B /* msso_config.json */; };
 		1FD4565B1F7C11ED00139619 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4565A1F7C11ED00139619 /* Service.swift */; };
+		1FD4566E1F7C2E7000139619 /* MASUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD4566C1F7C2E7000139619 /* MASUI.framework */; };
+		1FD4566F1F7C2E7000139619 /* MASUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD4566C1F7C2E7000139619 /* MASUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FD456701F7C2E7000139619 /* MASFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD4566D1F7C2E7000139619 /* MASFoundation.framework */; };
+		1FD456711F7C2E7000139619 /* MASFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD4566D1F7C2E7000139619 /* MASFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD3AA76D1F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7641F34E25C004FCAA7 /* SVIndefiniteAnimatedView.m */; };
 		CD3AA76E1F34E25C004FCAA7 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3AA7661F34E25C004FCAA7 /* SVProgressAnimatedView.m */; };
 		CD3AA76F1F34E25C004FCAA7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD3AA7681F34E25C004FCAA7 /* SVProgressHUD.bundle */; };
@@ -38,9 +42,26 @@
 		EA4AD2D45FF9B88731511C05 /* Pods_Recommendations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7525DDB7AA675C72CEB5FE04 /* Pods_Recommendations.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1FD456721F7C2E7000139619 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1FD4566F1F7C2E7000139619 /* MASUI.framework in Embed Frameworks */,
+				1FD456711F7C2E7000139619 /* MASFoundation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1F78788E1F741508007CF60B /* msso_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = msso_config.json; sourceTree = "<group>"; };
 		1FD4565A1F7C11ED00139619 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		1FD4566C1F7C2E7000139619 /* MASUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASUI.framework; path = ../MASUI.framework; sourceTree = "<group>"; };
+		1FD4566D1F7C2E7000139619 /* MASFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASFoundation.framework; path = ../MASFoundation.framework; sourceTree = "<group>"; };
 		7525DDB7AA675C72CEB5FE04 /* Pods_Recommendations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recommendations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6CB61E63E8D44BBC18F4AF /* Pods-Recommendations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.debug.xcconfig"; sourceTree = "<group>"; };
 		C726E2ACAEBF6B00F4134CE5 /* Pods-Recommendations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recommendations.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +107,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD4566E1F7C2E7000139619 /* MASUI.framework in Frameworks */,
 				EA4AD2D45FF9B88731511C05 /* Pods_Recommendations.framework in Frameworks */,
+				1FD456701F7C2E7000139619 /* MASFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +123,16 @@
 				C726E2ACAEBF6B00F4134CE5 /* Pods-Recommendations.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1FD456731F7C2F2E00139619 /* MAG */ = {
+			isa = PBXGroup;
+			children = (
+				1FD4566D1F7C2E7000139619 /* MASFoundation.framework */,
+				1FD4566C1F7C2E7000139619 /* MASUI.framework */,
+				1F78788E1F741508007CF60B /* msso_config.json */,
+			);
+			name = MAG;
 			sourceTree = "<group>";
 		};
 		CD3AA74D1F34E1A0004FCAA7 /* Frameworks */ = {
@@ -193,13 +226,13 @@
 		CDEAFA9F1F3F818900619839 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1FD456731F7C2F2E00139619 /* MAG */,
 				CDF61FE81F3CF0DF0027D0C6 /* otk.mycompany.com.cer */,
 				CDEAFA941F3E1BFB00619839 /* microgateway.cer */,
 				CDA8CB3C1F34BC83000FF0AB /* Recommendations.entitlements */,
 				CDA8CB311F34BC7A000FF0AB /* Assets.xcassets */,
 				CDA8CB361F34BC7A000FF0AB /* Info.plist */,
 				CDA8CB2E1F34BC7A000FF0AB /* Recommendations.xcdatamodeld */,
-				1F78788E1F741508007CF60B /* msso_config.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -257,6 +290,7 @@
 				CDA8CB3D1F34BE4E000FF0AB /* Incremental Build */,
 				FD59376DEEE9705F4C411189 /* [CP] Embed Pods Frameworks */,
 				750AD26D3905CB78978E023B /* [CP] Copy Pods Resources */,
+				1FD456721F7C2E7000139619 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,16 +422,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Recommendations/Pods-Recommendations-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${PODS_ROOT}/MASFoundation/MASFoundation.framework",
-				"${PODS_ROOT}/MASUI/MASUI.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/YNExpandableCell/YNExpandableCell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASFoundation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YNExpandableCell.framework",
 			);
@@ -561,6 +591,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Recommendations/Recommendations.entitlements;
 				DEVELOPMENT_TEAM = 85A3LY324E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/MASFoundation",
+				);
 				INFOPLIST_FILE = Recommendations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apimca.Recommendations;
@@ -579,6 +614,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Recommendations/Recommendations.entitlements;
 				DEVELOPMENT_TEAM = 85A3LY324E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/MASFoundation",
+				);
 				INFOPLIST_FILE = Recommendations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apimca.Recommendations;
